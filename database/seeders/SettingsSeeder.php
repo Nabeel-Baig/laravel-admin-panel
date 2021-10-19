@@ -17,8 +17,8 @@ class SettingsSeeder extends Seeder
         Setting::create([
             'name' => 'Your Website Name',
             'title' => 'Your Website Title',
-            'logo' => 'assets/images/logo.png',
-            'favico' => 'assets/images/logo.png',
+            'logo' => 'assets/images/logo.svg',
+            'favico' => 'assets/images/logo.svg',
             'email' => 'nabeel@outsourcetoasia.co',
             'phone' => '+92-333-3906233',
             'address' => 'Gulistan-e-Jauhar, Karachi.',
