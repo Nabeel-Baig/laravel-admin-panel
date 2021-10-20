@@ -67,19 +67,13 @@
 
                         <div class="mb-3">
                             <label class="form-label">{{ ucwords(str_replace('_',' ','dob')) }}</label>
-                            <input type="date" class="form-control @error('dob') parsley-error @enderror"
-                                   name="dob" id="dob" placeholder="{{ ucwords(str_replace('_',' ','dob')) }}" value="{{ old('dob') }}" required/>
-                            @error('dob')
-                            <span class="text-red">{{ $message }}</span>
-                            @enderror
+                            <input type="date" class="form-control"
+                                   name="dob" id="dob" placeholder="{{ ucwords(str_replace('_',' ','dob')) }}" value="{{ old('dob') }}"/>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">{{ ucwords(str_replace('_',' ','address')) }}</label>
-                            <input type="text" class="form-control @error('address') parsley-error @enderror" name="address" id="address" placeholder="{{ ucwords(str_replace('_',' ','address')) }}" value="{{ old('address') }}"/>
-                            @error('address')
-                            <span class="text-red">{{ $message }}</span>
-                            @enderror
+                            <textarea class="form-control" name="address" id="address" placeholder="{{ ucwords(str_replace('_',' ','address')) }}">{{ old('address') }}</textarea>
                         </div>
 
                         <div class="mb-3">
@@ -95,7 +89,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <input type="file" id="avatar" class="dropify" name="avatar" value="{{ old('avatar') }}" data-height="200" required>
+                            <input type="file" id="avatar" class="dropify" name="avatar" value="{{ old('avatar') }}" data-height="200">
                             @error('avatar')
                             <span class="text-red">{{ $message }}</span>
                             @enderror

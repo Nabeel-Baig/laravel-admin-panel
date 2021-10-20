@@ -57,6 +57,7 @@ class RolesController extends Controller
     public function create()
     {
         abort_if(Gate::denies('role_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        dd(\App\Models\Permission::latest());
         $permissions = \App\Models\Permission::latest()->get()->pluck('title','id');
         $title = $this->title;
         return view('admin.roles.create',compact('title','permissions'));

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,11 +17,6 @@ class UsersController extends Controller
         $this->title = ucwords('users');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -49,11 +45,6 @@ class UsersController extends Controller
         return view('admin.users.list')->with($content);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         abort_if(Gate::denies('user_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -71,33 +62,23 @@ class UsersController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        $user = User::create($request->all());
-        $user->type = 'user';
-        $user->save();
+        $user = User::create(handleFiles(\request()->segment(2),$request->validated()));
         $user->roles()->sync($request->input('roles', []));
         return redirect()->route('admin.users.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $roles = Role::latest()->get()->pluck('title','id');
+        $user->load('roles');
+        $title = $this->title;
+        return view('admin.users.edit',compact('roles','user','title'));
     }
 
     /**
