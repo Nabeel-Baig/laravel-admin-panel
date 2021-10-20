@@ -46,7 +46,6 @@ class RolesController extends Controller
                 })->rawColumns(['checkbox', 'action'])->make(true);
         }
         $content['title'] = $this->title;
-//        test
         return view('admin.roles.list')->with($content);
     }
 
