@@ -46,7 +46,9 @@
 </script>
 
 @yield('script')
-
+<script>
+    var baseUrl1 = '{{ url('/') }}';
+</script>
 <!-- App js -->
 <script src="{{ asset('assets/js/app.min.js')}}"></script>
 
