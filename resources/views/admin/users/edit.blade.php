@@ -50,7 +50,7 @@
                         <div class="mb-3">
                             <label class="form-label">{{ ucwords(str_replace('_',' ','email')) }}</label>
                             <input type="email" class="form-control @error('email') parsley-error @enderror"
-                                   name="email" id="email" placeholder="{{ ucwords(str_replace('_',' ','email')) }}" value="{{ old('email', $user->email ?? '') }}" required/>
+                                   name="email" id="email" placeholder="{{ ucwords(str_replace('_',' ','email')) }}" value="{{ old('email', $user->email ?? '') }}" disabled/>
                             @error('email')
                             <span class="text-red">{{ $message }}</span>
                             @enderror
@@ -93,6 +93,12 @@
                             @error('avatar')
                             <span class="text-red">{{ $message }}</span>
                             @enderror
+                        </div>
+
+                        <div class="d-flex flex-wrap gap-2">
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                Submit
+                            </button>
                         </div>
                     </form>
 

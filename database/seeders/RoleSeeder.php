@@ -17,16 +17,22 @@ class RoleSeeder extends Seeder
         $roles = [
             [
                 'id'         => 1,
-                'title'      => 'Admin',
+                'title'      => 'Master Admin',
                 'created_at' => '2019-09-27 07:11:07',
                 'updated_at' => '2019-09-27 07:11:07',
             ],
             [
                 'id'         => 2,
-                'title'      => 'User',
+                'title'      => 'Admin',
                 'created_at' => '2019-09-27 07:11:07',
                 'updated_at' => '2019-09-27 07:11:07',
             ],
+            [
+                'id'         => 3,
+                'title'      => 'Student',
+                'created_at' => '2019-09-27 07:11:07',
+                'updated_at' => '2019-09-27 07:11:07',
+            ]
         ];
 
         Role::insert($roles);

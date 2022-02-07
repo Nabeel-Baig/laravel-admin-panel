@@ -116,7 +116,73 @@ class PermissionSeeder extends Seeder
                 'title'      => 'setting_edit',
                 'created_at' => '2019-09-27 07:11:07',
                 'updated_at' => '2019-09-27 07:11:07',
-            ]
+            ],
+            [
+                'id'         => '18',
+                'title'      => 'category_create',
+                'created_at' => '2019-09-27 07:11:07',
+                'updated_at' => '2019-09-27 07:11:07',
+            ],
+            [
+                'id'         => '19',
+                'title'      => 'category_edit',
+                'created_at' => '2019-09-27 07:11:07',
+                'updated_at' => '2019-09-27 07:11:07',
+            ],
+            [
+                'id'         => '20',
+                'title'      => 'category_show',
+                'created_at' => '2019-09-27 07:11:07',
+                'updated_at' => '2019-09-27 07:11:07',
+            ],
+            [
+                'id'         => '21',
+                'title'      => 'category_delete',
+                'created_at' => '2019-09-27 07:11:07',
+                'updated_at' => '2019-09-27 07:11:07',
+            ],
+            [
+                'id'         => '22',
+                'title'      => 'category_access',
+                'created_at' => '2019-09-27 07:11:07',
+                'updated_at' => '2019-09-27 07:11:07',
+            ],
+            [
+                'id'         => '23',
+                'title'      => 'course_create',
+                'created_at' => '2019-09-27 07:11:07',
+                'updated_at' => '2019-09-27 07:11:07',
+            ],
+            [
+                'id'         => '24',
+                'title'      => 'course_edit',
+                'created_at' => '2019-09-27 07:11:07',
+                'updated_at' => '2019-09-27 07:11:07',
+            ],
+            [
+                'id'         => '25',
+                'title'      => 'course_show',
+                'created_at' => '2019-09-27 07:11:07',
+                'updated_at' => '2019-09-27 07:11:07',
+            ],
+            [
+                'id'         => '26',
+                'title'      => 'course_delete',
+                'created_at' => '2019-09-27 07:11:07',
+                'updated_at' => '2019-09-27 07:11:07',
+            ],
+            [
+                'id'         => '27',
+                'title'      => 'course_access',
+                'created_at' => '2019-09-27 07:11:07',
+                'updated_at' => '2019-09-27 07:11:07',
+            ],
+            [
+            'id'         => '28',
+            'title'      => 'student_access',
+            'created_at' => '2019-09-27 07:11:07',
+            'updated_at' => '2019-09-27 07:11:07',
+        ]
         ];
 
         Permission::insert($permissions);

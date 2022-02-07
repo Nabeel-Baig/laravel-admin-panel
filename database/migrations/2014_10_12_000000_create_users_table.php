@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->enum('theme',['dark','light'])->default('light');
             $table->string('two_factor_code')->nullable();
             $table->dateTime('two_factor_expires_at')->nullable();
-            $table->boolean('is_authenticate')->default(true);
+            $table->boolean('is_authenticate')->default(false);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

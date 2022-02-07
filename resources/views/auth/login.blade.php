@@ -103,30 +103,6 @@
                                                         In</button>
                                                 </div>
 
-                                                <div class="mt-4 text-center">
-                                                    <h5 class="font-size-14 mb-3">Sign in with</h5>
-
-                                                    <ul class="list-inline">
-                                                        <li class="list-inline-item">
-                                                            <a href="#"
-                                                                class="social-list-item bg-primary text-white border-primary">
-                                                                <i class="mdi mdi-facebook"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <a href="#"
-                                                                class="social-list-item bg-info text-white border-info">
-                                                                <i class="mdi mdi-twitter"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <a href="#"
-                                                                class="social-list-item bg-danger text-white border-danger">
-                                                                <i class="mdi mdi-google"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
                                             </form>
                                             <div class="mt-5 text-center">
                                                 <p>Don't have an account ? <a href="{{ url('register') }}"

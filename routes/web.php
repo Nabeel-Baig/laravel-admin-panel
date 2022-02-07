@@ -14,14 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Auth::routes();
-Auth::routes(['register' => false]);
+Auth::routes();
+//Auth::routes(['register' => true]);
 Route::get('verify/resend', [App\Http\Controllers\Auth\TwoFactorController::class, 'resend'])->name('verify.resend');
 Route::resource('verify', App\Http\Controllers\Auth\TwoFactorController::class)->only(['index', 'store']);
 //Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
 
-//Update User Details
-Route::post('/update-profile/{id}', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('updateProfile');
 Route::post('/update-password/{id}', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('updatePassword');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'App\Http\Controllers\Admin', 'middleware' => ['auth', 'twofactor']], function () {
@@ -41,9 +39,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'App\Http\Co
 //    Settings
     Route::resource('settings', SettingsController::class)->only(['edit', 'update']);
 
-    // Roles
-    /*Route::delete('roles/destroy', 'RolesController@massDestroy')->name('roles.massDestroy');
-    Route::resource('roles', 'RolesController');*/
+    // Categories
+    Route::delete('categories/destroy', [App\Http\Controllers\Admin\CategoriesController::class, 'massDestroy'])->name('categories.massDestroy');
+    Route::resource('categories', CategoriesController::class);
+
+    // Courses
+    Route::delete('courses/destroy', [App\Http\Controllers\Admin\CoursesController::class, 'massDestroy'])->name('courses.massDestroy');
+    Route::resource('courses', CoursesController::class);
+
+    // Update User Details
+    Route::put('/update-profile/{user}', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('updateProfile');
+    Route::get('/edit-profile', [App\Http\Controllers\HomeController::class, 'editProfile'])->name('editProfile');
 
     Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 });

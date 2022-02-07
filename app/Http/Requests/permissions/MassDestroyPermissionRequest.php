@@ -3,7 +3,6 @@
 namespace App\Http\Requests\permissions;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Permission;
 use Gate;
 use Symfony\Component\HttpFoundation\Response;
 

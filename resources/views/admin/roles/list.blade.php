@@ -242,7 +242,7 @@
                     };
                     ajax();
                 } else {
-                    js_error("Select atleast one record");
+                    toastr.error("Select at least one record");
                 }
             });
             @endcan

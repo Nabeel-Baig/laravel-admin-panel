@@ -63,12 +63,28 @@
                         <table class="table table-hover table-striped">
                             <tbody>
                             <tr>
-                                <th>{{ucwords(str_replace('_',' ','title'))}}</th>
-                                <td id="title" align="center"></td>
+                                <th>{{ucwords(str_replace('_',' ','image'))}}</th>
+                                <td id="avatar" align="center"></td>
                             </tr>
                             <tr>
-                                <th>{{ucwords(str_replace('_',' ','permissions'))}}</th>
-                                <td id="permissions" align="center"></td>
+                                <th>{{ucwords(str_replace('_',' ','name'))}}</th>
+                                <td id="name" align="center"></td>
+                            </tr>
+                            <tr>
+                                <th>{{ucwords(str_replace('_',' ','email'))}}</th>
+                                <td id="email" align="center"></td>
+                            </tr>
+                            <tr>
+                                <th>{{ucwords(str_replace('_',' ','phone'))}}</th>
+                                <td id="phone" align="center"></td>
+                            </tr>
+                            <tr>
+                                <th>{{ucwords(str_replace('_',' ','gender'))}}</th>
+                                <td id="gender" align="center"></td>
+                            </tr>
+                            <tr>
+                                <th>{{ucwords(str_replace('_',' ','dob'))}}</th>
+                                <td id="dob" align="center"></td>
                             </tr>
                             </tbody>
                         </table>
@@ -186,10 +202,12 @@
                     url: url.replace(':id',id),
                     dataType: "json",
                     success: function (data) {
-                        let permissions = '';
-                        data.permissions.forEach(item => permissions += `<span class="badge bg-primary">${item.title}</span>`)
-                        document.getElementById('title').innerText = data.title;
-                        document.getElementById('permissions').innerHTML = permissions;
+                        document.getElementById('avatar').innerHTML = `<img alt="{{asset('')}}${data.avatar}" src="{{asset('')}}${data.avatar}" />`;
+                        document.getElementById('name').innerText = data.name;
+                        document.getElementById('email').innerText = data.email;
+                        document.getElementById('phone').innerText = data.phone;
+                        document.getElementById('gender').innerText = data.gender;
+                        document.getElementById('dob').innerText = data.dob;
                         $("#viewModal").modal('show');
                     }
                 })
@@ -203,7 +221,7 @@
                 $('#confirmModal').modal('show');
             });
             $(document).on('click', '#ok_delete', function () {
-                let url = '{{ route('admin.roles.destroy',':id') }}'
+                let url = '{{ route('admin.'.request()->segment(2).'.destroy',':id') }}'
                 $.ajax({
                     type: "delete",
                     url: url.replace(':id',delete_id),
@@ -239,7 +257,7 @@
                         checkboxValue.push(e.getAttribute('value'));
                     });
                     let ajax = async () => {
-                        await fetch(`{{route('admin.roles.massDestroy')}}`, {
+                        await fetch(`{{route('admin.'.request()->segment(2).'.massDestroy')}}`, {
                             method: "delete",
                             headers: {
                                 'Content-Type': 'application/json',
@@ -255,7 +273,7 @@
                     };
                     ajax();
                 } else {
-                    js_error("Select atleast one record");
+                    toastr.error("Select at least one record");
                 }
             });
             @endcan

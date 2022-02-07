@@ -26,6 +26,5 @@ class AppServiceProvider extends ServiceProvider
     {
         $setting = Setting::findOrFail(1);
         view()->share(compact('setting'));
-//        dd($setting);
     }
 }

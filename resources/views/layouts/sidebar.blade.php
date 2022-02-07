@@ -18,6 +18,7 @@
 
 
                 <li class="menu-title" key="t-apps">Admin</li>
+                @can('user_management_access')
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-user"></i>
@@ -29,6 +30,26 @@
                         <li><a href="{{ route('admin.users.index') }}" key="t-product-detail">Users</a></li>
                     </ul>
                 </li>
+                @endcan
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-user"></i>
+                        <span>Course Management</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('admin.categories.index') }}" key="t-products">Categories</a></li>
+                        <li><a href="{{ route('admin.courses.index') }}" key="t-products">Courses</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="{{ route('admin.users.index') }}" class="waves-effect">
+                        <i class="bx bx-user"></i>
+                        <span>Users</span>
+                    </a>
+                </li>
+
 
                 <li>
                     <a href="{{ route('admin.settings.edit',$setting->id) }}" class="waves-effect">
@@ -37,6 +58,9 @@
                     </a>
                 </li>
 
+                @can('student_access')
+                    <li class="menu-title" key="t-apps">Student</li>
+                @endcan
 
 
             </ul>
